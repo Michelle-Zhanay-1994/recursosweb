@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MotocicletaCreateDlg" widgetVar="MotocicletaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMotocicletaTitle}">
+            <h:form id="MotocicletaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{motocicletaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMotocicletaLabel_idMotocicleta}" for="idMotocicleta" />
+                        <p:inputText id="idMotocicleta" value="#{motocicletaController.selected.idMotocicleta}" title="#{bundle.CreateMotocicletaTitle_idMotocicleta}" required="true" requiredMessage="#{bundle.CreateMotocicletaRequiredMessage_idMotocicleta}"/>
+                        <p:outputLabel value="#{bundle.CreateMotocicletaLabel_matricula}" for="matricula" />
+                        <p:inputText id="matricula" value="#{motocicletaController.selected.matricula}" title="#{bundle.CreateMotocicletaTitle_matricula}" />
+                        <p:outputLabel value="#{bundle.CreateMotocicletaLabel_cilindraje}" for="cilindraje" />
+                        <p:inputText id="cilindraje" value="#{motocicletaController.selected.cilindraje}" title="#{bundle.CreateMotocicletaTitle_cilindraje}" />
+                        <p:outputLabel value="#{bundle.CreateMotocicletaLabel_color}" for="color" />
+                        <p:inputText id="color" value="#{motocicletaController.selected.color}" title="#{bundle.CreateMotocicletaTitle_color}" />
+                        <p:outputLabel value="#{bundle.CreateMotocicletaLabel_precio}" for="precio" />
+                        <p:inputText id="precio" value="#{motocicletaController.selected.precio}" title="#{bundle.CreateMotocicletaTitle_precio}" />
+                        <p:outputLabel value="#{bundle.CreateMotocicletaLabel_marca}" for="marca" />
+                        <p:inputText id="marca" value="#{motocicletaController.selected.marca}" title="#{bundle.CreateMotocicletaTitle_marca}" />
+                        <p:outputLabel value="#{bundle.CreateMotocicletaLabel_compraidCompra}" for="compraidCompra" />
+                        <p:selectOneMenu id="compraidCompra" value="#{motocicletaController.selected.compraidCompra}" required="true" requiredMessage="#{bundle.EditMotocicletaRequiredMessage_compraidCompra}">
+                            <f:selectItems value="#{compraController.itemsAvailableSelectOne}"
+                                           var="compraidCompraItem"
+                                           itemValue="#{compraidCompraItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{motocicletaController.create}" value="#{bundle.Save}" update="display,:MotocicletaListForm:datalist,:growl" oncomplete="handleSubmit(args,'MotocicletaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MotocicletaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

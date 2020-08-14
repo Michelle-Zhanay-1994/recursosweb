@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MotocicletaViewDlg" widgetVar="MotocicletaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMotocicletaTitle}">
+            <h:form id="MotocicletaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{motocicletaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMotocicletaLabel_idMotocicleta}"/>
+                        <h:outputText value="#{motocicletaController.selected.idMotocicleta}" title="#{bundle.ViewMotocicletaTitle_idMotocicleta}"/>
+                        <h:outputText value="#{bundle.ViewMotocicletaLabel_matricula}"/>
+                        <h:outputText value="#{motocicletaController.selected.matricula}" title="#{bundle.ViewMotocicletaTitle_matricula}"/>
+                        <h:outputText value="#{bundle.ViewMotocicletaLabel_cilindraje}"/>
+                        <h:outputText value="#{motocicletaController.selected.cilindraje}" title="#{bundle.ViewMotocicletaTitle_cilindraje}"/>
+                        <h:outputText value="#{bundle.ViewMotocicletaLabel_color}"/>
+                        <h:outputText value="#{motocicletaController.selected.color}" title="#{bundle.ViewMotocicletaTitle_color}"/>
+                        <h:outputText value="#{bundle.ViewMotocicletaLabel_precio}"/>
+                        <h:outputText value="#{motocicletaController.selected.precio}" title="#{bundle.ViewMotocicletaTitle_precio}"/>
+                        <h:outputText value="#{bundle.ViewMotocicletaLabel_marca}"/>
+                        <h:outputText value="#{motocicletaController.selected.marca}" title="#{bundle.ViewMotocicletaTitle_marca}"/>
+                        <h:outputText value="#{bundle.ViewMotocicletaLabel_compraidCompra}"/>
+                        <h:outputText value="#{motocicletaController.selected.compraidCompra}" title="#{bundle.ViewMotocicletaTitle_compraidCompra}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MotocicletaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

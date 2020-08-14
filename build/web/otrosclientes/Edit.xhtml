@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OtrosclientesEditDlg" widgetVar="OtrosclientesEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditOtrosclientesTitle}">
+            <h:form id="OtrosclientesEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{otrosclientesController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditOtrosclientesLabel_idOtrosClientes}" for="idOtrosClientes" />
+                        <p:inputText id="idOtrosClientes" value="#{otrosclientesController.selected.idOtrosClientes}" title="#{bundle.EditOtrosclientesTitle_idOtrosClientes}" required="true" requiredMessage="#{bundle.EditOtrosclientesRequiredMessage_idOtrosClientes}"/>
+                        <p:outputLabel value="#{bundle.EditOtrosclientesLabel_dni}" for="dni" />
+                        <p:inputText id="dni" value="#{otrosclientesController.selected.dni}" title="#{bundle.EditOtrosclientesTitle_dni}" />
+                        <p:outputLabel value="#{bundle.EditOtrosclientesLabel_telefono}" for="telefono" />
+                        <p:inputText id="telefono" value="#{otrosclientesController.selected.telefono}" title="#{bundle.EditOtrosclientesTitle_telefono}" />
+                        <p:outputLabel value="#{bundle.EditOtrosclientesLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{otrosclientesController.selected.direccion}" title="#{bundle.EditOtrosclientesTitle_direccion}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{otrosclientesController.update}" value="#{bundle.Save}" update="display,:OtrosclientesListForm:datalist,:growl" oncomplete="handleSubmit(args, 'OtrosclientesEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OtrosclientesEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

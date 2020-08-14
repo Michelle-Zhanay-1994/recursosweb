@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OtrosclientesViewDlg" widgetVar="OtrosclientesViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewOtrosclientesTitle}">
+            <h:form id="OtrosclientesViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{otrosclientesController.selected != null}">
+                        <h:outputText value="#{bundle.ViewOtrosclientesLabel_idOtrosClientes}"/>
+                        <h:outputText value="#{otrosclientesController.selected.idOtrosClientes}" title="#{bundle.ViewOtrosclientesTitle_idOtrosClientes}"/>
+                        <h:outputText value="#{bundle.ViewOtrosclientesLabel_dni}"/>
+                        <h:outputText value="#{otrosclientesController.selected.dni}" title="#{bundle.ViewOtrosclientesTitle_dni}"/>
+                        <h:outputText value="#{bundle.ViewOtrosclientesLabel_telefono}"/>
+                        <h:outputText value="#{otrosclientesController.selected.telefono}" title="#{bundle.ViewOtrosclientesTitle_telefono}"/>
+                        <h:outputText value="#{bundle.ViewOtrosclientesLabel_direccion}"/>
+                        <h:outputText value="#{otrosclientesController.selected.direccion}" title="#{bundle.ViewOtrosclientesTitle_direccion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="OtrosclientesViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
